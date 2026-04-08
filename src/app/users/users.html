@@ -1,41 +1,40 @@
 <div class="container-user">
 
-    <form class="form-save" (ngSubmit)="save()">
-        <h2>Cadastro de Novos Usuários</h2>
+  <form class="form-save" (ngSubmit)="save()">
+    <h2>Cadastro de Novos Usuários</h2>
+
+    <label>Nome:</label>
+    <input type="text" [(ngModel)]="user.name" name="name" />
+
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="user.email" name="email" />
+
+    <button type="submit" class="save-button">Salvar</button>
+
+  </form>
 
 
-        <label>Nome:</label>
-        <input type="text" [(ngModel)]="user.name" name="name" />
+  <div class="list-container">
+    <h2>Lista de Usuários</h2>
 
-        <label>Email:</label>
-        <input type="email" [(ngModel)]="user.email" name="email" />
-
-        <button type="submit" class="save-button">Salvar</button>
-
-    </form>
-
-
-    <div class="list-container">
-  <h2>Lista de Usuários</h2>
-
-  <table class="user-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>E-mail</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let u of users">
-        <td>#{{ u.id }}</td>
-        <td>{{ u.name }}</td>
-        <td>{{ u.email }}</td>
-      </tr>
-      <tr *ngIf="users.length === 0">
-        <td colspan="3" style="text-align: center;">Nenhum usuário cadastrado.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>#{{ u.id }}</td>
+          <td>{{ u.name }}</td>
+          <td>{{ u.email }}</td>
+        </tr>
+        <tr *ngIf="users.length === 0">
+          <td colspan="3">Nenhum usuário cadastrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
