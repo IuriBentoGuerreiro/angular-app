@@ -46,4 +46,18 @@
       font-weight: 600;
     }
   }
+
+  .delete-button {
+    background-color: rgb(255, 24, 24);
+    color: #ddd;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .delete-button :hover {
+    background-color: rgb(204, 4, 4);
+    cursor: pointer;
+  }
 }

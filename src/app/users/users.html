@@ -4,10 +4,10 @@
     <h2>Cadastro de Novos Usuários</h2>
 
     <label>Nome:</label>
-    <input type="text" [(ngModel)]="user.name" name="name" />
+    <input type="text" [(ngModel)]="userRequest.name" name="name" />
 
     <label>Email:</label>
-    <input type="email" [(ngModel)]="user.email" name="email" />
+    <input type="email" [(ngModel)]="userRequest.email" name="email" />
 
     <button type="submit" class="save-button">Salvar</button>
 
@@ -23,6 +23,7 @@
           <th>ID</th>
           <th>Nome</th>
           <th>E-mail</th>
+          <th>Deletar</th>
         </tr>
       </thead>
       <tbody>
@@ -30,9 +31,18 @@
           <td>#{{ u.id }}</td>
           <td>{{ u.name }}</td>
           <td>{{ u.email }}</td>
+
+            <td class="delete-cotainer">
+
+              <button class="delete-button" (click)="delete(u.id)">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+              
+            </td>
+
         </tr>
         <tr *ngIf="users.length === 0">
-          <td colspan="3">Nenhum usuário cadastrado.</td>
+          <td colspan="4">Nenhum usuário cadastrado.</td>
         </tr>
       </tbody>
     </table>
