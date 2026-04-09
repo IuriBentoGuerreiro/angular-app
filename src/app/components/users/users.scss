@@ -56,8 +56,22 @@
     height: 40px;
   }
 
-  .delete-button :hover {
+  .delete-cotainer :hover {
     background-color: rgb(204, 4, 4);
+    cursor: pointer;
+  }
+
+  .edit-button {
+    background-color: rgb(255, 174, 0);
+    color: #ddd;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .edit-cotainer :hover {
+    background-color: rgb(204, 151, 4);
     cursor: pointer;
   }
 }

@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { User } from "../models/User";
 import { HttpClient } from "@angular/common/http";
 import { UserRequest } from "../models/UserRequest";
+import { UserResponse } from "../models/UserResponse";
 
 @Injectable({
     providedIn: 'root'
@@ -14,15 +14,23 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    findAll(): Observable<User[]> {
-        return this.http.get<User[]>(this.apiUrl);
+    findAll(): Observable<UserResponse[]> {
+        return this.http.get<UserResponse[]>(this.apiUrl);
     }
 
-    create(user: UserRequest): Observable<User> {
-        return this.http.post<User>(this.apiUrl, user);
+    create(userRequest: UserRequest): Observable<UserResponse>{
+        return this.http.post<UserResponse>(this.apiUrl, userRequest);
     }
 
-    delete(id: number): Observable<void> {
-         return this.http.delete<void>(`${this.apiUrl}/${id}`)
+    findById(id: number): Observable<UserResponse> {
+        return this.http.get<UserResponse>(`${this.apiUrl}/manager/${id}`);
+    }
+
+    update(id: number, userRequest: UserRequest): Observable<UserResponse> {
+        return this.http.put<UserResponse>(`${this.apiUrl}/${id}`, userRequest);
+    }
+
+    deleteById(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${id}`)
     }
 }

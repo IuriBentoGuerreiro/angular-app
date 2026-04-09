@@ -1,6 +1,6 @@
 <div class="container-user">
 
-  <form class="form-save" (ngSubmit)="save()">
+  <form class="form-save" (ngSubmit)="create(userRequest)">
     <h2>Cadastro de Novos Usuários</h2>
 
     <label>Nome:</label>
@@ -13,7 +13,6 @@
 
   </form>
 
-
   <div class="list-container">
     <h2>Lista de Usuários</h2>
 
@@ -24,21 +23,30 @@
           <th>Nome</th>
           <th>E-mail</th>
           <th>Deletar</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let u of users">
-          <td>#{{ u.id }}</td>
+          <td (click)="findById(u.id)">{{ u.id }}</td>
           <td>{{ u.name }}</td>
           <td>{{ u.email }}</td>
 
-            <td class="delete-cotainer">
+          <td class="delete-cotainer">
 
-              <button class="delete-button" (click)="delete(u.id)">
-                <mat-icon>delete_outline</mat-icon>
-              </button>
-              
-            </td>
+            <button class="delete-button" (click)="delete(u.id)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+
+          </td>
+
+          <td class="edit-cotainer">
+
+            <button class="edit-button" (click)="delete(u.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+          </td>
 
         </tr>
         <tr *ngIf="users.length === 0">
