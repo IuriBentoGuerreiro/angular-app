@@ -1,18 +1,21 @@
 <div class="container-user">
 
-    <form class="form-save">
+    <form class="form-save" (ngSubmit)="update()">
         <h2>Gerenciar Usuário</h2>
 
+        <label>Id:</label>
+        <input type="number" name="id" [disabled]="true" [value]="userResponse.id" />
+
         <label>Nome:</label>
-        <input type="text" name="name" />
+        <input type="text" name="name" [(ngModel)]="userResponse.name" />
 
         <label>Email:</label>
-        <input type="email" name="email" />
+        <input type="email" name="email" [(ngModel)]="userResponse.email" />
 
         <div class="button-cotainer">
-            <button type="submit" class="edit-button">Editar</button>
+            <button type="submit" class="edit-button">Salvar Alterações</button>
 
-            <button class="delete-button">Deletar Usuário</button>
+            <button type="button" class="delete-button" (click)="delete()">Deletar Usuário</button>
         </div>
     </form>
 </div>

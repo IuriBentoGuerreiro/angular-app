@@ -16,7 +16,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'user-manager',
+    path: 'user-manager/:id',
     component: UserManager
   }
 ];

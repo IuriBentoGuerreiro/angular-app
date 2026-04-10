@@ -22,32 +22,13 @@
           <th>ID</th>
           <th>Nome</th>
           <th>E-mail</th>
-          <th>Deletar</th>
-          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let u of users">
-          <td (click)="findById(u.id)">{{ u.id }}</td>
-          <td>{{ u.name }}</td>
-          <td>{{ u.email }}</td>
-
-          <td class="delete-cotainer">
-
-            <button class="delete-button" (click)="delete(u.id)">
-              <mat-icon>delete_outline</mat-icon>
-            </button>
-
-          </td>
-
-          <td class="edit-cotainer">
-
-            <button class="edit-button" (click)="delete(u.id)">
-              <mat-icon>edit</mat-icon>
-            </button>
-
-          </td>
-
+          <td [routerLink]="['/user-manager', u.id]">{{ u.id }}</td>
+          <td [routerLink]="['/user-manager', u.id]"> {{ u.name }}</td>
+          <td [routerLink]="['/user-manager', u.id]"> {{ u.email }}</td>
         </tr>
         <tr *ngIf="users.length === 0">
           <td colspan="4">Nenhum usuário cadastrado.</td>

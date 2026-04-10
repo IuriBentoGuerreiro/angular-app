@@ -5,11 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserRequest } from '../../models/UserRequest';
 import { UserService } from '../../services/UserService';
 import { UserResponse } from '../../models/UserResponse';
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-users',
-  standalone: true,
-  imports: [FormsModule, CommonModule, MatIconModule],
+  imports: [FormsModule, CommonModule, MatIconModule, RouterLink],
   templateUrl: './users.html',
   styleUrl: './users.scss',
 })
@@ -24,7 +24,8 @@ export class Users implements OnInit {
 
   constructor(
     private userService: UserService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -56,34 +57,6 @@ export class Users implements OnInit {
 
       complete() {
         userRequest.name = '', userRequest.email = '';
-      },
-    });
-  }
-
-  update(id: number, userRequest: UserRequest){
-    return this.userService.update(id, userRequest).subscribe({
-      next: () => {
-        this.loadUsers();
-      },
-
-      error(err){
-        alert("Erro ao atualizar dados dos usuários: " + err);
-      }
-    })
-  }
-
-  findById(id: number){
-    return this.userService.findById(id).subscribe({})
-  }
-
-  delete(id: number) {
-    return this.userService.deleteById(id).subscribe({
-      next: () => {
-        this.loadUsers();
-      },
-
-      error(err) {
-        alert("Erro ao deletar usuário: " + err)
       },
     });
   }
