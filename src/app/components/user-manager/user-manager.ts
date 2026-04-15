@@ -3,11 +3,12 @@ import { UserService } from '../../services/UserService';
 import { UserRequest } from '../../models/UserRequest';
 import { FormsModule } from "@angular/forms";
 import { UserResponse } from '../../models/UserResponse';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-manager',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './user-manager.html',
   styleUrl: './user-manager.scss',
 })
@@ -19,7 +20,9 @@ export class UserManager implements OnInit {
     private userService: UserService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastService: ToastrService
+
   ) { }
 
   get userId(): number {
@@ -36,6 +39,9 @@ export class UserManager implements OnInit {
         this.userResponse = data;
         this.cdr.detectChanges();
       },
+      error: () => {
+        this.toastService.error('Erro ao carregar');
+      },
     })
   }
 
@@ -43,9 +49,12 @@ export class UserManager implements OnInit {
     const request: UserRequest = { name: this.userResponse.name, email: this.userResponse.email }
 
     return this.userService.update(this.userId, request).subscribe({
+      next: () => {
+        this.toastService.success("Usuário Atualizado Com Sucesso!");
+      },
 
-      error(err) {
-        alert("Erro ao atualizar dados dos usuários: " + err);
+      error: () => {
+        this.toastService.error('Erro ao atualizar dados dos usuários:');
       }
     })
   }
@@ -54,6 +63,10 @@ export class UserManager implements OnInit {
     return this.userService.deleteById(this.userId).subscribe({
       next: () => {
         this.router.navigate(['/users']);
+        this.toastService.success('Usuário Deletado Com Sucesso!');
+      },
+      error: (err) => {
+        this.toastService.error('Erro ao deletar');
       },
     })
   }

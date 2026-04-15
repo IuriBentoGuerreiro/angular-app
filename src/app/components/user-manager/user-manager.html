@@ -1,10 +1,14 @@
 <div class="container-user">
 
+    <div class="back-button">
+        <button type="button" routerLink="/users">Voltar</button>
+    </div>
+
     <form class="form-save" (ngSubmit)="update()">
         <h2>Gerenciar Usuário</h2>
 
         <label>Id:</label>
-        <input type="number" name="id" [disabled]="true" [value]="userResponse.id" />
+        <input class="id-cotainer" name="id" [disabled]="true" [value]="userResponse.id" />
 
         <label>Nome:</label>
         <input type="text" name="name" [(ngModel)]="userResponse.name" />

@@ -5,7 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserRequest } from '../../models/UserRequest';
 import { UserService } from '../../services/UserService';
 import { UserResponse } from '../../models/UserResponse';
-import { Router, RouterLink } from "@angular/router";
+import { RouterLink } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
+import { FilterName } from '../../models/FilterName';
 
 @Component({
   selector: 'app-users',
@@ -22,15 +24,29 @@ export class Users implements OnInit {
     email: ''
   }
 
+  filterName: FilterName = {
+    name: ''
+  }
+
   constructor(
     private userService: UserService,
     private cdr: ChangeDetectorRef,
-    private router: Router
+    private toastService: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.serachName();
   }
+
+  serachName() {
+    return this.userService.searchName(this.filterName).subscribe({
+      next: (data: UserResponse[]) => {
+        this.users = data;
+        this.cdr.detectChanges();
+      },
+
+    });
+   }
 
   loadUsers() {
     return this.userService.findAll().subscribe({
@@ -39,8 +55,8 @@ export class Users implements OnInit {
         this.cdr.detectChanges();
       },
 
-      error(err) {
-        alert("Erro na listagem dos usuários: " + err);
+      error() {
+        alert("Erro na listagem dos usuários: ");
 
       },
     })
@@ -50,6 +66,7 @@ export class Users implements OnInit {
     return this.userService.create(userRequest).subscribe({
       next: () => {
         this.loadUsers();
+        this.toastService.success("Cadastro Realizado Com Sucesso!");
       },
       error(err) {
         alert("Erro ao salvar usuário: " + err)
