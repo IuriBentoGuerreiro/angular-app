@@ -46,7 +46,7 @@ export class Users implements OnInit {
       },
 
     });
-   }
+  }
 
   loadUsers() {
     return this.userService.findAll().subscribe({
@@ -55,8 +55,8 @@ export class Users implements OnInit {
         this.cdr.detectChanges();
       },
 
-      error() {
-        alert("Erro na listagem dos usuários: ");
+      error: (err) => {
+        this.toastService.error("Erro na listagem dos usuários: " + err.message);
 
       },
     })
@@ -68,10 +68,9 @@ export class Users implements OnInit {
         this.loadUsers();
         this.toastService.success("Cadastro Realizado Com Sucesso!");
       },
-      error(err) {
-        alert("Erro ao salvar usuário: " + err)
+      error: (err) => {
+        this.toastService.error("Erro ao salvar usuário: " + err.message)
       },
-
       complete() {
         userRequest.name = '', userRequest.email = '';
       },
