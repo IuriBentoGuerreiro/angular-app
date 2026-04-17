@@ -20,16 +20,12 @@ export class UserService {
     }
 
  searchName(filterName: FilterName): Observable<UserResponse[]> {
-    // Iniciamos o HttpParams. Se o nome existir, preenchemos.
     let params = new HttpParams();
     
     if (filterName?.name) {
         params = params.set('name', filterName.name);
     }
 
-    // Agora passamos sempre o objeto com params. 
-    // Se o nome existir, a URL será: .../search?name=valor
-    // Se não existir, a URL será apenas: .../search
     return this.http.get<UserResponse[]>(`${this.apiUrl}/search`, { params });
 }
 
