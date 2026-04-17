@@ -1,59 +1,61 @@
-# AngularApp
+🚀 User Management System - Angular & Spring Boot
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+Este projeto é uma aplicação de gerenciamento de usuários que nasceu com um objetivo claro: provar que a simplicidade e a eficiência podem caminhar juntas. A arquitetura foi pensada para oferecer uma interface minimalista e intuitiva (Simplicidade), enquanto utiliza as tecnologias mais recentes do ecossistema Angular para garantir alta performance e manutenibilidade (Eficiência).
+🎯 Objetivo do Projeto
 
-## Development server
+Desenvolver uma solução de CRUD que elimine a complexidade desnecessária para o usuário final, mantendo um código-fonte robusto, tipado e escalável.
 
-To start a local development server, run:
+    Simplicidade: Interface limpa, navegação direta e feedback visual imediato.
 
-```bash
-ng serve
-```
+    Eficiência: Uso de variáveis CSS para um Design System leve, injeção de dependências otimizada e comunicação assíncrona com o backend via RxJS.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+🛠 Tecnologias Utilizadas
+Frontend
 
-## Code scaffolding
+    Angular 21: Framework de alta performance para SPAs.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+    Angular Material: Componentes de UI consistentes e acessíveis.
 
-```bash
-ng generate component component-name
-```
+    SCSS (Modular): Estilização avançada com foco em reuso através de variáveis globais.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+    ngx-toastr: Sistema de notificações leve para feedback de operações.
 
-```bash
-ng generate --help
-```
+Backend (Integração)
 
-## Building
+    Spring Boot: API REST robusta.
 
-To build the project run:
+    Java 21: Aproveitando as últimas melhorias da linguagem.
 
-```bash
-ng build
-```
+🎨 Funcionalidades
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+    Gestão Ágil: Cadastro e edição de usuários em poucos cliques.
 
-## Running unit tests
+    Busca Inteligente: Filtro dinâmico por nome que otimiza as requisições ao servidor.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+    Design System Moderno: Paleta de cores e tipografia padronizadas via :root CSS, facilitando futuras manutenções ou implementação de Dark Mode.
 
-```bash
-ng test
-```
+    Navegação Fluida: Uso de roteamento avançado do Angular para uma experiência sem recarregamentos de página.
 
-## Running end-to-end tests
+⚙️ Como Executar o Projeto
+Pré-requisitos
 
-For end-to-end (e2e) testing, run:
+    Node.js (v20+)
 
-```bash
-ng e2e
-```
+    Angular CLI
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+    API Backend ativa na porta 8080
 
-## Additional Resources
+Clone o Repositório:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    git clone https://github.com/IuriBentoGuerreiro/angular-app
+
+Instale as Dependêcias:    
+
+    npm install
+
+Execute a Aplicação:    
+
+    ng s
+
+
+👨‍💻 Autor: Iuri Guerreiro 
